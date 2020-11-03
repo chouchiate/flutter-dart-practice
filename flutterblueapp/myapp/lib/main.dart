@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 
+import './btoffscreen.dart';
+import './btdevicelist.dart';
+
 void main() => runApp(MyFlutterBlueApp());
 
 class MyFlutterBlueApp extends StatelessWidget {
@@ -8,28 +11,18 @@ class MyFlutterBlueApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Bluetooth Demo',
-      color: Colors.lightBlue,
-      home: StreamBuilder<BluetoothState>(
-        stream: FlutterBlue.instance.state,
-        initialData: BluetoothState.unknown,
-        builder: (ctx, snapshot) {
-          final state = snapshot.data;
-          if(state==BluetoothState.on){
-            return FindDevicesScreen();
-          }
-          return BluetoothOffScreen(state: state);
-          return
-        },
-      )
-    );
+        title: 'Flutter Bluetooth Demo',
+        color: Colors.lightBlue,
+        home: StreamBuilder<BluetoothState>(
+          stream: FlutterBlue.instance.state,
+          initialData: BluetoothState.unknown,
+          builder: (ctx, snapshot) {
+            final state = snapshot.data;
+            if (state == BluetoothState.on) {
+              return BtFindDevicesScreen();
+            }
+            return BtOffScreen(state: state);
+          },
+        ));
   }
-}
-
-class FindDevicesScreen extends StatelessWidget {
-
-}
-
-class BluetoothOffScreen extends StatelessWidget {
-
 }

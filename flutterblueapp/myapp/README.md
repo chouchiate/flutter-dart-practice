@@ -1,16 +1,40 @@
 # myapp
 
-A new Flutter project.
+A Flutter Bluetooth demo project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. Installation - In pubspec.yaml add:
+```yaml
+flutter_blue: ^0.7.2
 
-A few resources to get you started if this is your first Flutter project:
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+2. minSdkVersion 16 changes to minSdkVersion 19 at build.gradle
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. Android - In AndroidManifest.xml add:
+```xml
+<uses-permission android:name="android.permission.BLUETOOTH"/>
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+```
+
+4. iOS - In Info.plist add:
+```xml
+<key>NSBluetoothAlwaysUsageDescription</key>
+<string>Need BLE permission</string>
+<key>NSBluetoothPeripheralUsageDescription</key>
+<string>Need BLE permission</string>
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>Need Location permission</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>Need Location permission</string>
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>Need Location permission</string>
+```
+
+
+
+
+
+
